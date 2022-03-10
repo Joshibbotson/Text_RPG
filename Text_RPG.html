@@ -123,6 +123,9 @@ switch(name) {
     case 'jake': alert (`Gunther: Interesting, you seem well equipped in the realm of science ${name}, you will be an excellent addition to our team!`);
     break;
 
+    case 'matt','matthew', 'mat' : alert (`Gunther: Interesting, you seem well versed in the realm of science ${name}, specifically the categorisation of samples...`);
+    break;
+
     default: name = (prompt ("Gunther: You need not lie to me, give me your true name.").toLowerCase());
     correctName();
     
@@ -145,6 +148,9 @@ function correctName () {
     break;
 
     case 'jake': alert (`Gunther: Interesting, you seem well equipped in the realm of science ${name}, you will be an excellent addition to our team!`);
+    break;
+    
+    case 'matt','matthew', 'mat' : alert (`Gunther: Interesting, you seem well versed in the realm of science ${name}, specifically the categorisation of samples...`);
     break;
 
     default:(alert(`Gunther: Okay ${name} if that is your real name...`));
