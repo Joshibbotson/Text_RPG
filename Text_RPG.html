@@ -115,10 +115,10 @@ switch(name) {
     case 'saki': alert (`Gunther: Such a lovely name! Sounds Japanese... or Chinese? Is there even a difference? Oh well, lets go ${name}!`);
     break;
 
-    case 'daniel' || 'dan': alert (`Gunther: ${name}... huh, couldn't be Dan, Dan the magic man could it? I've heard such stories of his wonders... Anyhow, lets go!`);
+    case 'daniel', 'dan': alert (`Gunther: ${name}... huh, couldn't be Dan, Dan the magic man could it? I've heard such stories of his wonders... Anyhow, lets go!`);
     break;
 
-    default: name = (prompt ("Gunther: Are you certain you don't go by something else?").toLowerCase());
+    default: name = (prompt ("Gunther: You need not lie to me, give me your true name.").toLowerCase());
     correctName();
     
     }
@@ -144,7 +144,7 @@ function correctName () {
 }
 
 alert ("* You continue with Gunther and his allies forward toward a nearby encampment a couple of miles down the way *");
-alert (`* ORCS SURROUND YOU *\n Gunther: Fight until the bitter end ${name} we must not die here!`);
+alert (`* ORCS SURROUND YOU *\n\n\n Gunther: Fight until the bitter end ${name} we must not die here!`);
 alert ('* A large nightmarish orc strides toward you and swings a large wooden club *');
 alert (orcAttack);
 
@@ -166,7 +166,28 @@ function orcAttackDecider () {
 
 orcAttackDecider ();
 
+let fortitude = 0;
+let defense = 0;
+let attack = 0;
 
+
+function CharacterStats () {
+    switch (Item) {
+        case Item = 'Long Sword':return attack = attack + 8;
+        break;
+        case Item = 'Shield':return defense = defense + 8;
+        break;
+        case Item = 'Doulbe headed axe':return defense = defense + 8;
+        break;
+        case Item = 'Chainmail':return defense = defense + 8;
+        break;
+        case Item = 'set of Mythic arrows':return attack = attack +8;
+        break;
+    }
+}
+
+
+CharacterStats();
 console.log ("if you've come here, perhaps try entering one of our names when asked for your name brave warrior!");
   
 
