@@ -5,13 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>An Adventure</title>
-    <link rel="stylesheet" href="Style.css" class="stylesheet">
+    <!-- <link rel="stylesheet" href="Style.css" class="stylesheet"> -->
 </head>
-<body>
-    <div class="container">
-        <h2>Instructions</h2>
-        <a>follow the tale! The "Okay" button means "yes", and the "Cancel" button means "no"</a>
-    </div>
+<body style="background-color:black;">
+    
     <script>
 //Arrays//
         const inventory = [
@@ -25,12 +22,11 @@
 '* near miss *',
 '* direct hit *',
 '* complete miss *',
-'* partial miss *'
-        ];
+'* partial miss *'];
 
 
 function orcAttackGenerator () {
-    return orc_attacks [Math.floor (Math.random() * inventory.length)]; 
+    return orc_attacks [Math.floor (Math.random() * orc_attacks.length)]; 
 }   
 
 function chosenItemGenerator () {
@@ -47,6 +43,8 @@ alert ('Instructions\n\nfollow the tale! The "Okay" button means "yes", and the 
 alert ("Gunther: Be quick, arm yourself, orcs are coming!");
 let answer = confirm ("Gunther: Are you with us?");
 
+
+//Gives the player the choice to go with Gunther, but forces them to go regardless//
 function withUs () {
     
 if ((answer == true) || (secondAnswer == true))
@@ -58,6 +56,7 @@ let secondAnswer = confirm ("Gunther: Don't be foolish! Orcs are coming!");
 if (secondAnswer == true) {
    answer = true;
 }}
+// withUS end//
 
 withUs();
 
@@ -65,6 +64,7 @@ alert ("Gunther: You'll be needing some gear...");
 
 alert (`Gunther: Here take this ${Item}`)
 
+//Describes items from item array//
 function itemDescriptor () {
 if (Item == 'Long Sword') {
     alert ("* It's longer than your average blade *")}
@@ -78,6 +78,7 @@ if (Item == 'set of Mythic arrows') {
     alert ("* Arguably less impressive in the flesh *")};
 }
 
+//Gives a second item if requested//
 function secondItemDescriptor () {
 if (secondChoice == 'long Sword') {
     alert ("* It's longer than your average blade *")}
@@ -92,6 +93,7 @@ if (secondChoice == 'set of Mythic arrows') {
 };
 }
 
+//allows player to choose new item//
 itemDescriptor();
 
 if (confirm ("Gunther: Happy with your choice?") == true)
@@ -118,6 +120,9 @@ switch(name) {
     case 'daniel', 'dan': alert (`Gunther: ${name}... huh, couldn't be Dan, Dan the magic man could it? I've heard such stories of his wonders... Anyhow, lets go!`);
     break;
 
+    case 'jake': alert (`Gunther: Interesting, you seem well equipped in the realm of science ${name}, you will be an excellent addition to our team!`);
+    break;
+
     default: name = (prompt ("Gunther: You need not lie to me, give me your true name.").toLowerCase());
     correctName();
     
@@ -139,55 +144,93 @@ function correctName () {
     case 'daniel', 'dan': alert (`Gunther: ${name}... huh, couldn't be Dan, Dan the magic man could it? I've heard such stories of his wonders... Anyhow, lets go!`);
     break;
 
+    case 'jake': alert (`Gunther: Interesting, you seem well equipped in the realm of science ${name}, you will be an excellent addition to our team!`);
+    break;
+
     default:(alert(`Gunther: Okay ${name} if that is your real name...`));
 }
 }
 
 alert ("* You continue with Gunther and his allies forward toward a nearby encampment a couple of miles down the way *");
 alert (`* ORCS SURROUND YOU *\n\n\n Gunther: Fight until the bitter end ${name} we must not die here!`);
-alert ('* A large nightmarish orc strides toward you and swings a large wooden club *');
+alert ('* A large nightmarish orc strides toward you and swings a large wooden club toward you *');
 alert (orcAttack);
 
+//Adds attack or defense stats to player dependent on item recieved//
+function CharacterStats () {
+    switch (Item) {
+        case Item = 'Long Sword':return attack = attack + 2;
+        break;
+        case Item = 'Shield':return defense = defense + 2;
+        break;
+        case Item = 'Doulbe headed axe':return defense = defense + 2;
+        break;
+        case Item = 'Chainmail':return defense = defense + 2;
+        break;
+        case Item = 'set of Mythic arrows':return attack = attack +2;
+        break;
+    }
+}
+
+let health = 10;
+let defense = 0;
+let attack = 0;
+
+CharacterStats();
+
+// responds to orcAttack array with different outcomes and also is dependent on newly attained character stats//
 function orcAttackDecider () {
     switch (orcAttack) {
-        case '* near miss *': alert (`* You were lucky this time ${name}. *`);
+        case '* near miss *':
+            alert (`* You were lucky this time ${name}. *`);
         break;
 
-        case '* direct hit *': alert (`* Traumatic, you take serious damage *`);
-        break;
 
-        case '* complete miss *': alert (`* You laugh at such a terrible miss *`);
+        case '* direct hit *':{
+            if (defense < 2){
+                    health = (health - 4)
+                    alert (`* Traumatic, you take serious damage *\n\n Health = ${health}`)
+                    return health
+                    break;}
+            
+            else if (defense >= 2) {
+                    health = (health - 2)
+                    alert (`* Traumatic, you take serious damage *\n\n Health = ${health}`)
+                    return health
+                    break;}
+        }
         break;
+    
 
-        case '* partial miss *': alert (`* The club grazes your jaw, but you are mostly unscathed *`);
-        break;
+        case '* complete miss *': 
+            alert (`* You laugh at such a terrible miss *`);
+            break;
+
+
+
+        case '* partial miss *': {
+            if (defense < 2) {
+                health = (health - 2)
+                alert (`* The club grazes your jaw, but you are mostly unscathed *\n\n Health = ${health}`)
+                return health
+                break;}
+        
+            else if (defense >= 2) {
+                health = (health - 1)
+                alert (`* The club grazes your jaw, but you are mostly unscathed *\n\n Health = ${health}`)
+                return health
+                break;}
+        }
     }
 }
 
 orcAttackDecider ();
 
-let fortitude = 0;
-let defense = 0;
-let attack = 0;
 
 
-function CharacterStats () {
-    switch (Item) {
-        case Item = 'Long Sword':return attack = attack + 8;
-        break;
-        case Item = 'Shield':return defense = defense + 8;
-        break;
-        case Item = 'Doulbe headed axe':return defense = defense + 8;
-        break;
-        case Item = 'Chainmail':return defense = defense + 8;
-        break;
-        case Item = 'set of Mythic arrows':return attack = attack +8;
-        break;
-    }
-}
 
 
-CharacterStats();
+
 console.log ("if you've come here, perhaps try entering one of our names when asked for your name brave warrior!");
   
 
