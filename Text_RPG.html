@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>An Adventure</title>
+    <link rel="stylesheet" href="Style.css" class="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h2>Instructions</h2>
+        <a>follow the tale! The "Okay" button means "yes", and the "Cancel" button means "no"</a>
+    </div>
+    <script>
+//Arrays//
+        const inventory = [
+'Long Sword', 
+'Shield',
+'Double headed axe',
+'Chainmail',
+'set of Mythic arrows'];
+
+        const orc_attacks = [
+'* near miss *',
+'* direct hit *',
+'* complete miss *',
+'* partial miss *'
+        ];
+
+
+function orcAttackGenerator () {
+    return orc_attacks [Math.floor (Math.random() * inventory.length)]; 
+}   
+
+function chosenItemGenerator () {
+    return inventory [Math.floor (Math.random() * inventory.length)];
+}
+
+let Item = chosenItemGenerator();
+let secondChoice = chosenItemGenerator();
+let name;
+let orcAttack = orcAttackGenerator();
+
+alert ('Instructions\n\nfollow the tale! The "Okay" button means "yes", and the "Cancel" button means "no"')
+
+alert ("Gunther: Be quick, arm yourself, orcs are coming!");
+let answer = confirm ("Gunther: Are you with us?");
+
+function withUs () {
+    
+if ((answer == true) || (secondAnswer == true))
+    {alert ("Gunther: That's the spirit! let's go!")}
+}
+
+while (answer == false) {
+let secondAnswer = confirm ("Gunther: Don't be foolish! Orcs are coming!");
+if (secondAnswer == true) {
+   answer = true;
+}}
+
+withUs();
+
+alert ("Gunther: You'll be needing some gear...");
+
+alert (`Gunther: Here take this ${Item}`)
+
+function itemDescriptor () {
+if (Item == 'Long Sword') {
+    alert ("* It's longer than your average blade *")}
+if (Item == 'Shield') {
+    alert ("* Shielded from all *")}
+if (Item == 'Double headed axe' ) {
+    alert ("* A hefty axe, might split a log or two *")}
+if (Item == 'Chainmail' ) {
+    alert ("* Looks like it may stop arrows dead in their tracks *")}
+if (Item == 'set of Mythic arrows') {
+    alert ("* Arguably less impressive in the flesh *")};
+}
+
+function secondItemDescriptor () {
+if (secondChoice == 'long Sword') {
+    alert ("* It's longer than your average blade *")}
+if (secondChoice == 'Shield') {
+    alert ("* Shielded from all *")}
+if (secondChoice == 'Double headed axe') {
+    alert ("* A hefty axe, might split a log or two *")}
+if (secondChoice == 'Chainmail') {
+    alert ("* Looks like it may stop arrows dead in their tracks *")}
+if (secondChoice == 'set of Mythic arrows') {
+    alert ("* Arguably less impressive in the flesh *")
+};
+}
+
+itemDescriptor();
+
+if (confirm ("Gunther: Happy with your choice?") == true)
+    {name = (prompt ("Gunther: What is your name brave warrior?").toLowerCase())}
+
+else {(alert (`Gunther: here take this ${secondChoice} instead`) + (secondItemDescriptor()));
+    name = (prompt ("Gunther: What is your name brave warrior?").toLowerCase());}
+
+    nameDecider();
+
+
+//Check name is correct first time, if not gives ability for new name//
+function nameDecider () {
+switch(name) {
+    case 'sam': alert (`Gunther: Jheez the god's didn't look kindly on you did they? Oh well come on ${name} let's be off`);
+    break;
+
+    case 'josh': alert (`Gunther: A truly honourable name! I'm sure you're destined for great things ${name}!`);
+    break;
+
+    case 'saki': alert (`Gunther: Such a lovely name! Sounds Japanese... or Chinese? Is there even a difference? Oh well, lets go ${name}!`);
+    break;
+
+    case 'daniel' || 'dan': alert (`Gunther: ${name}... huh, couldn't be Dan, Dan the magic man could it? I've heard such stories of his wonders... Anyhow, lets go!`);
+    break;
+
+    default: name = (prompt ("Gunther: Are you certain you don't go by something else?").toLowerCase());
+    correctName();
+    
+    }
+}
+
+//Checks new name is correct, and if not accepts new name from nameDecider//
+function correctName () {
+ switch (name) {
+    case 'sam': alert (`Gunther: Jheez the god's didn't look kindly on you did they? Oh well come on ${name} let's be off`);
+    break;
+
+    case 'josh': alert (`Gunther: A truly honourable name! I'm sure you're destined for great things ${name}!`);
+    break;
+
+    case 'saki': alert (`Gunther: Such a lovely name! Sounds Japanese... or Chinese? Is there even a difference? Oh well, lets go ${name}!`);
+    break;
+
+    case 'daniel', 'dan': alert (`Gunther: ${name}... huh, couldn't be Dan, Dan the magic man could it? I've heard such stories of his wonders... Anyhow, lets go!`);
+    break;
+
+    default:(alert(`Gunther: Okay ${name} if that is your real name...`));
+}
+}
+
+alert ("* You continue with Gunther and his allies forward toward a nearby encampment a couple of miles down the way *");
+alert (`* ORCS SURROUND YOU *\n Gunther: Fight until the bitter end ${name} we must not die here!`);
+alert ('* A large nightmarish orc strides toward you and swings a large wooden club *');
+alert (orcAttack);
+
+function orcAttackDecider () {
+    switch (orcAttack) {
+        case '* near miss *': alert (`* You were lucky this time ${name}. *`);
+        break;
+
+        case '* direct hit *': alert (`* Traumatic, you take serious damage *`);
+        break;
+
+        case '* complete miss *': alert (`* You laugh at such a terrible miss *`);
+        break;
+
+        case '* partial miss *': alert (`* The club grazes your jaw, but you are mostly unscathed *`);
+        break;
+    }
+}
+
+orcAttackDecider ();
+
+
+console.log ("if you've come here, perhaps try entering one of our names when asked for your name brave warrior!");
+  
+
+
+
+
+    </script>
+</body>
+</html>
