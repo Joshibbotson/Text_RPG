@@ -120,10 +120,13 @@ switch(name) {
     case 'daniel', 'dan': alert (`Gunther: ${name}... huh, couldn't be Dan, Dan the magic man could it? I've heard such stories of his wonders... Anyhow, lets go!`);
     break;
 
-    case 'jake': alert (`Gunther: Interesting, you seem well equipped in the realm of science ${name}, you will be an excellent addition to our team!`);
+    case 'jake': alert (`Gunther: I see you're a scientist ${name}! Y'know I'm somewhat of a scientist myself`);
     break;
 
     case 'matt','matthew', 'mat' : alert (`Gunther: Interesting, you seem well versed in the realm of science ${name}, specifically the categorisation of samples...`);
+    break;
+
+    case 'ally' : alert (`Gunther: I've heard many things about you ${name}, your cooking skills, your mastery of languages ... and oh what's that? You can't eat chocolate anymore? I'm truly sorry for your loss.`);
     break;
 
     default: name = (prompt ("Gunther: You need not lie to me, give me your true name.").toLowerCase());
@@ -147,10 +150,13 @@ function correctName () {
     case 'daniel', 'dan': alert (`Gunther: ${name}... huh, couldn't be Dan, Dan the magic man could it? I've heard such stories of his wonders... Anyhow, lets go!`);
     break;
 
-    case 'jake': alert (`Gunther: Interesting, you seem well equipped in the realm of science ${name}, you will be an excellent addition to our team!`);
+    case 'jake': alert (`Gunther: I see you're a scientist ${name}! Y'know I'm somewhat of a scientist myself`);
     break;
-    
+
     case 'matt','matthew', 'mat' : alert (`Gunther: Interesting, you seem well versed in the realm of science ${name}, specifically the categorisation of samples...`);
+    break;
+
+    case 'ally' : alert (`Gunther: I've heard many things about you ${name}, your cooking skills, your mastery of languages ... and oh what's that? You can't eat chocolate anymore? I'm truly sorry for your loss.`);
     break;
 
     default:(alert(`Gunther: Okay ${name} if that is your real name...`));
@@ -195,13 +201,13 @@ function orcAttackDecider () {
         case '* direct hit *':{
             if (defense < 2){
                     health = (health - 4)
-                    alert (`* Traumatic, you take serious damage *\n\n Health = ${health}`)
+                    alert (`* Traumatic, you take serious damage *\n\n Health: ${health}`)
                     return health
                     break;}
             
             else if (defense >= 2) {
                     health = (health - 2)
-                    alert (`* Traumatic, you take serious damage *\n\n Health = ${health}`)
+                    alert (`* Traumatic, you take serious damage *\n\n Health: ${health}`)
                     return health
                     break;}
         }
@@ -217,13 +223,13 @@ function orcAttackDecider () {
         case '* partial miss *': {
             if (defense < 2) {
                 health = (health - 2)
-                alert (`* The club grazes your jaw, but you are mostly unscathed *\n\n Health = ${health}`)
+                alert (`* The club grazes your arm, but you are mostly unscathed *\n\n Health: ${health}`)
                 return health
                 break;}
         
             else if (defense >= 2) {
                 health = (health - 1)
-                alert (`* The club grazes your jaw, but you are mostly unscathed *\n\n Health = ${health}`)
+                alert (`* The club grazes your arm, but you are mostly unscathed *\n\n Health: ${health}`)
                 return health
                 break;}
         }
